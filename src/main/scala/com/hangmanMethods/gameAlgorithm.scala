@@ -1,11 +1,15 @@
 package com.hangmanMethods
 import scala.collection.mutable.ListBuffer
+
 class gameAlgorithm {
+
 
   //Declare start function
   def start():Unit={
     //Declare variables
-    val ans: String = "apple" //add database later here
+
+    val ans: String = "test"//Database query parse into string
+
     var countScore:Int = 5
     val indexBuffer = new ListBuffer[Int]
     val ansList = ans.toList
@@ -14,7 +18,6 @@ class gameAlgorithm {
     //Main game start
     println("\nGAME START! \n")
     println(ansDisplay.mkString("")+ s" Remaining attempts: $countScore")
-    println("Hint: fruit that keeps doctors away")
 
     while(countScore >= 0) {
       print("Take your guess: ")
@@ -49,4 +52,5 @@ class gameAlgorithm {
 
 
   }
+
 }

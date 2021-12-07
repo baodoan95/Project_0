@@ -3,16 +3,11 @@ package com.hangmanMethods
 class startOptions {
   //Instantiate game start
   val gameAlgorithm = new gameAlgorithm
-  val Login = new Login
-  val Leaderboard = new Leaderboard
 
   //Declare print function
   def printOptions():Unit={
-    println(s"${Console.YELLOW}1. Login")
-    println("2. Create Account")
-    println("3. Leaderboard")
-    println("4. Upload CSV Words/Hints File")
-    println(s"5. Quit Game${Console.RESET}")
+    println(s"${Console.YELLOW}1. Launch Game")
+    println(s"2. Quit Game${Console.RESET}")
     print("Please input your choice: ")
   }
 
@@ -22,15 +17,9 @@ class startOptions {
     var isValid: Boolean = false
     while(isValid == false)
       input match {
-        case "1" => Login.login()
+        case "1" => gameAlgorithm.start()
           isValid = true
-        case "2" => Login.createAccount()
-          isValid = true
-        case "3" => Leaderboard.start()
-          isValid = true
-        case "4" => println("Successfully Quit Game")
-          System.exit(0)
-          isValid = true
+        case "2" => System.exit(0)
         case _ => print("Invalid Input.  Please re-enter:  ")
           input = io.StdIn.readLine()
       }
