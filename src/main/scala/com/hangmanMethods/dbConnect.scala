@@ -16,12 +16,13 @@ class dbConnect {
   def getLeaderboard():Unit={
     val scores = statement.executeQuery("SELECT nickname, score FROM players INNER JOIN scores ON players.player_id = scores.player_id ORDER BY score DESC")
     var count = 1
+    println("\n****************************")
     while(scores.next()){
       println(s"RANK $count  ${scores.getString(1)}  ${scores.getString(2)}")
       count += 1
     }
     count = 1
-    println("\n")
+    println("****************************\n")
   }
 
   def getWord():ListBuffer[String]={

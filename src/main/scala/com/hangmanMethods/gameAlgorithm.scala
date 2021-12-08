@@ -22,7 +22,7 @@ class gameAlgorithm {
     var choiceCheck = false
     var ans = new String
     while(choiceCheck == false) choice match{
-      case x if 1 until dbchoiceNum contains x => ans = dbList(x-1)
+      case x if 1 to dbchoiceNum contains x => ans = dbList(x-1)
                     choiceCheck = true
       case _ => println("Invalid input.  Re-enter")
                 choice = io.StdIn.readInt()
@@ -31,7 +31,7 @@ class gameAlgorithm {
 
 
 
-    //ans
+    //Code portion to check winner and loser based on score count
     var isWinner:Boolean = false
     var countAttempt:Int = 5
     val indexBuffer = new ListBuffer[Int]
@@ -40,7 +40,7 @@ class gameAlgorithm {
     var incorrectGuesses = new ListBuffer[Char]
     //Main game start
     println("\nGAME START! \n")
-    println(ansDisplay.mkString("")+ s" Attempt Left: $countAttempt")
+    println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempt Left: $countAttempt${Console.RESET}")
 
     while(isWinner != true) {
       print("Take your guess (1-quit): ")
@@ -64,14 +64,14 @@ class gameAlgorithm {
           ansDisplay = ansDisplay.updated(indexBuffer(i), userAns)
         }
       }
-      println(ansDisplay.mkString("")+ s" Attempts Left: $countAttempt")
+      println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempt Left: $countAttempt${Console.RESET}")
       indexBuffer.clear()
       if(countAttempt == 0){
         println("YOU LOST!   NO POINTS EARNED THIS ROUND")
         isWinner = true
       }
       if(ansDisplay.indexOf('_') == -1){
-        println(s"YOU WIN!  SCORES YOU EARNED THIS ROUND IS $countAttempt Points")
+        println(s"${Console.RED}YOU WIN!  SCORES YOU EARNED THIS ROUND IS $countAttempt Points${Console.RESET}")
         isWinner = true
       }
     }//while loop end

@@ -6,11 +6,12 @@ class playerHandling {
     var nickname = new String
     def getInfo():Unit= {
       val dbConnect = new dbConnect()
-      print("Choose Nickname: ")
+      print("\n\nPlease Choose Nickname: ")
       nickname = io.StdIn.readLine()
       dbConnect.submitNickname(nickname)
       val userID = dbConnect.getPlayerID(nickname).mkString("")
       dbConnect.addScore(userID,0)
+      println(s"---WELCOME $nickname TO HANGMAN GAME---")
       gameAlgorithm.start(dbConnect.getPlayerID(nickname).mkString(""))
     }
     def printEndChoices():Unit= {
