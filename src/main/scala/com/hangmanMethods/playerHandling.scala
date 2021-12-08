@@ -16,7 +16,8 @@ class playerHandling {
     }
     def printEndChoices():Unit= {
       println(s"${Console.YELLOW}1. Continue playing")
-      println(s"2. To main menu${Console.RESET}")
+      println("2. View Leaderboard")
+      println(s"3. To main menu${Console.RESET}")
       print("Please input your choice: ")
     }
     def endChoiceInput():Unit={
@@ -28,7 +29,11 @@ class playerHandling {
       while(isValid == false) input match{
         case "1" => gameAlgorithm.start(dbConnect.getLatestID().mkString(""))
 
-        case "2" => startOptions.printOptions()
+        case "2" => dbConnect.getLeaderboard()
+                    printEndChoices()
+                    endChoiceInput()
+
+        case "3" => startOptions.printOptions()
                     startOptions.getInput()
         case _ => println("Invalid input.  Try again.")
                   endChoiceInput()
