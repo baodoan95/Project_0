@@ -49,7 +49,9 @@ class dbConnect {
   def updateScore(playerid: String, score: Int):Unit={
     statement.executeUpdate(s"UPDATE scores SET score = score + $score WHERE player_id = $playerid;")
   }
-
+  def addScore(playerid: String, score: Int): Unit ={
+    statement.executeUpdate(s"INSERT INTO scores VALUES($playerid,$score);")
+  }
   def getLatestID():ListBuffer[String]={
     val maxid = statement.executeQuery("SELECT MAX(player_id) FROM players;")
     val maxidlb = new ListBuffer[String]

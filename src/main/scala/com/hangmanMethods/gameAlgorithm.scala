@@ -68,7 +68,6 @@ class gameAlgorithm {
       indexBuffer.clear()
       if(countAttempt == 0){
         println("YOU LOST!   NO POINTS EARNED THIS ROUND")
-        countAttempt = 5
         isWinner = true
       }
       if(ansDisplay.indexOf('_') == -1){
@@ -78,7 +77,8 @@ class gameAlgorithm {
     }//while loop end
 
     //End Match Choices
-    println(playerId)
+    dbConnect.updateScore(playerId,countAttempt)
+    countAttempt = 5
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()
 
