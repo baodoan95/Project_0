@@ -4,7 +4,8 @@ import scala.collection.mutable.ListBuffer
 class gameAlgorithm {
 
   //Declare start function
-  def start():Unit={
+  def start(player_id: String):Unit={
+    val playerId = player_id
     //Instantiate
     val playerHandling = new playerHandling()
     val dbConnect = new dbConnect()
@@ -77,6 +78,7 @@ class gameAlgorithm {
     }//while loop end
 
     //End Match Choices
+    println(playerId)
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()
 

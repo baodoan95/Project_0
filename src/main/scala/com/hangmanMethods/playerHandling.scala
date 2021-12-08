@@ -9,7 +9,7 @@ class playerHandling {
       print("Choose Nickname: ")
       nickname = io.StdIn.readLine()
       dbConnect.submitNickname(nickname)
-      gameAlgorithm.start()
+      gameAlgorithm.start(dbConnect.getPlayerID(nickname).mkString(""))
     }
     def printEndChoices():Unit= {
       println(s"${Console.YELLOW}1. Continue playing")
@@ -22,7 +22,7 @@ class playerHandling {
       val input = io.StdIn.readLine()
       var isValid = false
       while(isValid == false) input match{
-        case "1" => gameAlgorithm.start()
+        case "1" => gameAlgorithm.start("")
 
         case "2" => startOptions.printOptions()
                     startOptions.getInput()
