@@ -45,4 +45,8 @@ class dbConnect {
     }
     idlb
   }
+
+  def updateScore(playerid: String, score: Int):Unit={
+    statement.executeUpdate(s"UPDATE scores SET score = score + $score WHERE player_id = $playerid;")
+  }
 }
