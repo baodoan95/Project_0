@@ -20,7 +20,7 @@ class startOptions {
     val playerHandling = new playerHandling()
     var input = io.StdIn.readLine()
     var isValid: Boolean = false
-    while(isValid == false)
+    while(isValid == false) {
       input match {
         case "1" => playerHandling.getInfo()
           isValid = true
@@ -31,5 +31,7 @@ class startOptions {
         case _ => print("Invalid Input.  Please re-enter:  ")
           input = io.StdIn.readLine()
       }
+    }
+    dbConnect.connection.close() //Close connection to database
   }
 }

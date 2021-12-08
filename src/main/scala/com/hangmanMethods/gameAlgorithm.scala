@@ -78,6 +78,7 @@ class gameAlgorithm {
 
     //End Match Choices
     dbConnect.updateScore(playerId,countAttempt)
+    dbConnect.connection.close() //close connection to database
     countAttempt = 5
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()

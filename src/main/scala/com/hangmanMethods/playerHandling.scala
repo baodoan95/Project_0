@@ -13,6 +13,7 @@ class playerHandling {
       dbConnect.addScore(userID,0)
       println(s"---WELCOME $nickname TO HANGMAN GAME---")
       gameAlgorithm.start(dbConnect.getPlayerID(nickname).mkString(""))
+      dbConnect.connection.close() //Close connection to database
     }
     def printEndChoices():Unit= {
       println(s"${Console.YELLOW}1. Continue playing")
@@ -38,6 +39,7 @@ class playerHandling {
         case _ => println("Invalid input.  Try again.")
                   endChoiceInput()
       }
+      dbConnect.connection.close() //Close connection to database
     }
 
 
