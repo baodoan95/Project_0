@@ -40,7 +40,7 @@ class gameAlgorithm {
     var incorrectGuesses = new ListBuffer[Char]
     //Main game start
     println("\nGAME START! \n")
-    println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempt Left: $countAttempt${Console.RESET}")
+    println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
 
     while(isWinner != true) {
       print("Take your guess (1-quit): ")
@@ -64,7 +64,7 @@ class gameAlgorithm {
           ansDisplay = ansDisplay.updated(indexBuffer(i), userAns)
         }
       }
-      println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempt Left: $countAttempt${Console.RESET}")
+      println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
       indexBuffer.clear()
       if(countAttempt == 0){
         println("YOU LOST!   NO POINTS EARNED THIS ROUND")
