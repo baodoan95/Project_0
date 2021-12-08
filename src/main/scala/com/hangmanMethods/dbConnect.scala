@@ -3,6 +3,7 @@ import java.sql.DriverManager
 import java.sql.Connection
 import java.sql.PreparedStatement
 import java.sql.SQLException
+import scala.collection.mutable.ListBuffer
 class dbConnect {
   //Connection to database
   val driver = "com.mysql.cj.jdbc.Driver"
@@ -24,6 +25,14 @@ class dbConnect {
     println("\n")
   }
 
-
+  def getWord():ListBuffer[String]={
+    val statement = connection.createStatement()
+    val words = statement.executeQuery("SELECT * FROM words;")
+    val wordLB = new ListBuffer[String]
+    while(words.next()){
+      wordLB += words.getString(2)
+    }
+    wordLB
+  }
 
 }

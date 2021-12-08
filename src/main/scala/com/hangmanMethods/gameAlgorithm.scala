@@ -8,11 +8,30 @@ class gameAlgorithm {
   def start():Unit={
     //Instantiate
     val playerHandling = new playerHandling()
-
+    val dbConnect = new dbConnect()
 
     //Declare variables
-    val ans: String = "bao"//Database query parse into string
+    val dbList = dbConnect.getWord()//Database query parse into ListBuffer with all answers
 
+    //Let user pick word choice
+    val dbchoiceNum = dbList.length
+    println(s"Database return total: $dbchoiceNum word choices.")
+    println(s"Please pick from 1 - $dbchoiceNum")
+    print("Enter your choice: ")
+    var choice = io.StdIn.readInt()
+    var choiceCheck = false
+    var ans = new String
+    while(choiceCheck == false) choice match{
+      case x if 1 until dbchoiceNum contains x => ans = dbList(x-1)
+                    choiceCheck = true
+      case _ => println("Invalid input.  Re-enter")
+                choice = io.StdIn.readInt()
+    }
+
+
+
+
+    //ans
     var isWinner:Boolean = false
     var countAttempt:Int = 5
     val indexBuffer = new ListBuffer[Int]

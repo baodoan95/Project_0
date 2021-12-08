@@ -4,8 +4,7 @@ class startOptions {
   //Instantiate game start
   val gameAlgorithm = new gameAlgorithm()
 
-  //Instantiate database connection for query and update
-  val dbConnect = new dbConnect()
+
   //Declare print function
   def printOptions():Unit={
     println(s"${Console.YELLOW}1. Start New Game")
@@ -16,6 +15,8 @@ class startOptions {
 
   //Declare get user input function
   def getInput():Unit= {
+    //Instantiate database connection for query and update
+    val dbConnect = new dbConnect()
     val playerHandling = new playerHandling()
     var input = io.StdIn.readLine()
     var isValid: Boolean = false

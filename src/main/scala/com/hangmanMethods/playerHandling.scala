@@ -16,6 +16,7 @@ class playerHandling {
       print("Please input your choice: ")
     }
     def endChoiceInput():Unit={
+      val dbConnect = new dbConnect()
       val input = io.StdIn.readLine()
       var isValid = false
       while(isValid == false) input match{
