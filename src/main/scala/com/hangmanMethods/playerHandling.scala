@@ -8,7 +8,7 @@ class playerHandling {
       val dbConnect = new dbConnect()
       print("Choose Nickname: ")
       nickname = io.StdIn.readLine()
-      dbConnect.submitData(nickname)
+      dbConnect.submitNickname(nickname)
       gameAlgorithm.start()
     }
     def printEndChoices():Unit= {
@@ -17,11 +17,13 @@ class playerHandling {
       print("Please input your choice: ")
     }
     def endChoiceInput():Unit={
+      //instantiate game algorithm
+      val gameAlgorithm = new gameAlgorithm()
       val input = io.StdIn.readLine()
       var isValid = false
       while(isValid == false) input match{
-        case "1" => println("implement")
-                    isValid = true
+        case "1" => gameAlgorithm.start()
+
         case "2" => startOptions.printOptions()
                     startOptions.getInput()
         case _ => println("Invalid input.  Try again.")

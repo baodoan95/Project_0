@@ -11,10 +11,9 @@ class dbConnect {
   val username = "root"
   val password = "BaodoaN95"
   var connection:Connection = DriverManager.getConnection(url, username, password)
-
+  val statement = connection.createStatement()
   //function to get leader board
   def getLeaderboard():Unit={
-    val statement = connection.createStatement()
     val scores = statement.executeQuery("SELECT nickname, score FROM players INNER JOIN scores ON players.player_id = scores.player_id ORDER BY score DESC")
     var count = 1
     while(scores.next()){
@@ -26,7 +25,6 @@ class dbConnect {
   }
 
   def getWord():ListBuffer[String]={
-    val statement = connection.createStatement()
     val words = statement.executeQuery("SELECT * FROM words;")
     val wordLB = new ListBuffer[String]
     while(words.next()){
@@ -35,8 +33,16 @@ class dbConnect {
     wordLB
   }
 
-  def submitData(str: String):Unit={
-    val statement = connection.createStatement()
+  def submitNickname(str: String):Unit={
     statement.executeUpdate(s"INSERT INTO players VALUES(NULL,'$str');")
+  }
+
+  def getPlayerID(nickname: String):ListBuffer[String]={
+    val id = statement.executeQuery(s"SELECT player_id FROM players WHERE nickname='$nickname';")
+    val idlb = new ListBuffer[String]
+    while(id.next()){
+      idlb += id.getString(1)
+    }
+    idlb
   }
 }

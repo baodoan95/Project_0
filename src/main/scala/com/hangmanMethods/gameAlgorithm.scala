@@ -66,7 +66,7 @@ class gameAlgorithm {
       println(ansDisplay.mkString("")+ s" Attempts Left: $countAttempt")
       indexBuffer.clear()
       if(countAttempt == 0){
-        println("YOU LOST!")
+        println("YOU LOST!   NO POINTS EARNED THIS ROUND")
         countAttempt = 5
         isWinner = true
       }
