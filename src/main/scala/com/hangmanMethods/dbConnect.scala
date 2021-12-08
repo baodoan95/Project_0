@@ -10,10 +10,20 @@ class dbConnect {
   val username = "root"
   val password = "BaodoaN95"
   var connection:Connection = DriverManager.getConnection(url, username, password)
-  val statement = connection.createStatement()
-  val resultSet = statement.executeQuery("SELECT * FROM words;")
-  while ( resultSet.next() ) {
-    println(resultSet.getString(1)+", " +resultSet.getString(2))
+
+  //function to get leader board
+  def getLeaderboard():Unit={
+    val statement = connection.createStatement()
+    val scores = statement.executeQuery("SELECT nickname, score FROM players INNER JOIN scores ON players.player_id = scores.player_id ORDER BY score DESC")
+    var count = 1
+    while(scores.next()){
+      println(s"RANK $count  ${scores.getString(1)}  ${scores.getString(2)}")
+      count += 1
+    }
+    count = 1
+    println("\n")
   }
-  connection.close()
+
+
+
 }

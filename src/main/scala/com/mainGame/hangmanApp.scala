@@ -1,5 +1,5 @@
 package com.mainGame
-import com.hangmanMethods.{gameAlgorithm, startOptions, welcomeLine}
+import com.hangmanMethods._
 object hangmanApp {
   def main(args:Array[String]):Unit= {
     //Instantiate hangmanMethods into objects
@@ -7,10 +7,9 @@ object hangmanApp {
     val welcomeLine = new welcomeLine()
 
 
-//    welcomeLine.print()
-//    startOptions.printOptions()
-//    startOptions.getInput()
-
+    welcomeLine.print()
+    startOptions.printOptions()
+    startOptions.getInput()
 
   }
 }
