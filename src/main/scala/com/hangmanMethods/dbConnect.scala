@@ -35,4 +35,8 @@ class dbConnect {
     wordLB
   }
 
+  def submitData(str: String):Unit={
+    val statement = connection.createStatement()
+    statement.executeUpdate(s"INSERT INTO players VALUES(NULL,'$str');")
+  }
 }

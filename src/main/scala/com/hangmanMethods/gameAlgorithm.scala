@@ -2,7 +2,6 @@ package com.hangmanMethods
 import scala.collection.mutable.ListBuffer
 
 class gameAlgorithm {
-  // Instantiate
 
   //Declare start function
   def start():Unit={
@@ -72,7 +71,7 @@ class gameAlgorithm {
         isWinner = true
       }
       if(ansDisplay.indexOf('_') == -1){
-        println("YOU WIN!")
+        println(s"YOU WIN!  SCORES YOU EARNED THIS ROUND IS $countAttempt Points")
         isWinner = true
       }
     }//while loop end
