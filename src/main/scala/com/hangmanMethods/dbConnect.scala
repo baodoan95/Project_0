@@ -61,5 +61,12 @@ class dbConnect {
     }
     maxidlb
   }
-
+  def getWordsList():Unit={
+    val allWords = statement.executeQuery("SELECT * FROM words;")
+    println("\n-----------WORDS LIST-----------")
+    while(allWords.next()){
+      println(s"${allWords.getString(1)}. ${allWords.getString(2)}")
+    }
+    println("--------------------------------\n")
+  }
 }

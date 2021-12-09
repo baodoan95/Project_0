@@ -9,7 +9,9 @@ class startOptions {
   def printOptions():Unit={
     println(s"${Console.YELLOW}1. Start New Game")
     println("2. View Leaderboard")
-    println(s"3. Quit Game${Console.RESET}")
+    println("3. View Words List")
+    println("4. Add New Word To Words List")
+    println(s"5. Quit Game${Console.RESET}")
     print("Please input your choice: ")
   }
 
@@ -27,7 +29,11 @@ class startOptions {
         case "2" => dbConnect.getLeaderboard()
           printOptions()
           getInput()
-        case "3" => System.exit(0)
+        case "3" => dbConnect.getWordsList()
+          printOptions()
+          getInput()
+        case "4" => println("add word to list")
+        case "5" => System.exit(0)
         case _ => print("Invalid Input.  Please re-enter:  ")
           input = io.StdIn.readLine()
       }
