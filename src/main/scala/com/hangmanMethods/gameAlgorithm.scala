@@ -15,8 +15,8 @@ class gameAlgorithm {
 
     //Let user pick word choice
     val dbchoiceNum = dbList.length
-    println(s"Database return total: $dbchoiceNum word choices.")
-    println(s"Please pick from 1 - $dbchoiceNum")
+    println(s"There are a total of: ${Console.YELLOW}$dbchoiceNum${Console.RESET} word choices.")
+    println(s"Please pick from ${Console.YELLOW}1 - $dbchoiceNum${Console.RESET}")
     print("Enter your choice: ")
     var choice = io.StdIn.readInt()
     var choiceCheck = false
@@ -67,11 +67,11 @@ class gameAlgorithm {
       println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
       indexBuffer.clear()
       if(countAttempt == 0){
-        println("YOU LOST!   NO POINTS EARNED THIS ROUND")
+        println(s"\n${Console.BLUE}YOU LOST!   NO POINTS EARNED THIS ROUND\n${Console.RESET}")
         isWinner = true
       }
       if(ansDisplay.indexOf('_') == -1){
-        println(s"${Console.RED}YOU WIN!  SCORES YOU EARNED THIS ROUND IS $countAttempt Points${Console.RESET}")
+        println(s"\n${Console.RED}YOU WIN!  SCORES YOU EARNED THIS ROUND ARE $countAttempt Points${Console.RESET}\n")
         isWinner = true
       }
     }//while loop end
@@ -82,7 +82,7 @@ class gameAlgorithm {
     countAttempt = 5
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()
-
+    println("")
   }
 
 }
