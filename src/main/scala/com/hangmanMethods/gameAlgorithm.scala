@@ -1,18 +1,14 @@
 package com.hangmanMethods
 import scala.collection.mutable.ListBuffer
-
 class gameAlgorithm {
-
   //Declare start function
   def start(player_id: String):Unit={
     val playerId = player_id
     //Instantiate
     val playerHandling = new playerHandling()
     val dbConnect = new dbConnect()
-
     //Declare variables
     val dbList = dbConnect.getWord()//Database query parse into ListBuffer with all answers
-
     //Let user pick word choice
     val dbchoiceNum = dbList.length
     println(s"There are a total of: ${Console.YELLOW}$dbchoiceNum${Console.RESET} word choices.")
@@ -23,14 +19,12 @@ class gameAlgorithm {
     var ans = new String
     while(choiceCheck == false) choice match{
       case x if 1 to dbchoiceNum contains x => ans = dbList(x-1)
-                    choiceCheck = true
+        choiceCheck = true
       case _ => println("Invalid input.  Re-enter")
-                choice = io.StdIn.readInt()
+        choice = io.StdIn.readInt()
     }
-
-
-
-
+    //Update chosen word into database as played once and plus 1 to count
+    dbConnect.updateWordPlayCount(ans)
     //Code portion to check winner and loser based on score count
     var isWinner:Boolean = false
     var countAttempt:Int = 5
@@ -41,7 +35,7 @@ class gameAlgorithm {
     //Main game start
     println("\nGAME START! \n")
     println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
-
+    //Loop logic until player win or lose
     while(isWinner != true) {
       print("Take your guess (1-quit): ")
       //Find index of character in answer string
@@ -50,9 +44,7 @@ class gameAlgorithm {
       for (i <- -0 until ansList.length) {
         if (ansList(i) == userAns) indexBuffer += i
       }
-
       //Check if user has guessed the correct letter
-
       if (indexBuffer.length == 0) {
         println("Incorrect!")
         countAttempt -= 1
@@ -75,7 +67,6 @@ class gameAlgorithm {
         isWinner = true
       }
     }//while loop end
-
     //End Match Choices
     dbConnect.updateScore(playerId,countAttempt)
     dbConnect.connection.close() //close connection to database
@@ -83,5 +74,4 @@ class gameAlgorithm {
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()
   }
-
 }

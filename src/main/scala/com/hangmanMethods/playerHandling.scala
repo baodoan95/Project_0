@@ -1,5 +1,4 @@
 package com.hangmanMethods
-
 class playerHandling {
     val gameAlgorithm = new gameAlgorithm()
     val startOptions = new startOptions()
@@ -29,19 +28,15 @@ class playerHandling {
       var isValid = false
       while(isValid == false) input match{
         case "1" => gameAlgorithm.start(dbConnect.getLatestID().mkString(""))
-
         case "2" => dbConnect.getLeaderboard()
-                    printEndChoices()
-                    endChoiceInput()
-
+          printEndChoices()
+          endChoiceInput()
         case "3" => println("")
-                    startOptions.printOptions()
-                    startOptions.getInput()
+          startOptions.printOptions()
+          startOptions.getInput()
         case _ => println("Invalid input.  Try again.")
-                  endChoiceInput()
+          endChoiceInput()
       }
       dbConnect.connection.close() //Close connection to database
     }
-
-
 }
