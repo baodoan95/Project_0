@@ -82,7 +82,6 @@ class gameAlgorithm {
     countAttempt = 5
     playerHandling.printEndChoices()
     playerHandling.endChoiceInput()
-    println("")
   }
 
 }

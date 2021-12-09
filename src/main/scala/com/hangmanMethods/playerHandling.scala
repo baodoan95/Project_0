@@ -34,7 +34,8 @@ class playerHandling {
                     printEndChoices()
                     endChoiceInput()
 
-        case "3" => startOptions.printOptions()
+        case "3" => println("")
+                    startOptions.printOptions()
                     startOptions.getInput()
         case _ => println("Invalid input.  Try again.")
                   endChoiceInput()
