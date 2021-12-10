@@ -30,7 +30,7 @@ class gameAlgorithm {
     var countAttempt:Int = 5
     val indexBuffer = new ListBuffer[Int]
     val ansList = ans.toList
-    var ansDisplay = List.tabulate(ans.length)(x => '_').toVector
+    var ansDisplay = List.tabulate(ansList.length)(x => '_').toVector
     var incorrectGuesses = new ListBuffer[Char]
     //Main game start
     println("\nGAME START! \n")
