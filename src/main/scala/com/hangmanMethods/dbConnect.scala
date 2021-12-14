@@ -18,7 +18,7 @@ class dbConnect {
     var count = 1
     println("\n****************************")
     while(scores.next()){
-      println(s"RANK $count  ${scores.getString(1)}  ${scores.getString(2)}")
+      println(f"RANK $count  ${scores.getString(1)}%10s     ${scores.getString(2)}")
       count += 1
     }
     count = 1
@@ -70,7 +70,7 @@ class dbConnect {
     println("\n---WORDS LIST--------TIMES PLAYED--")
     while(allWords.next()){
       count += 1
-      println(s"$count. ${allWords.getString(1)}                  ${allWords.getString(2)}")
+      println(f"$count. ${allWords.getString(1)}%10s            ${allWords.getString(2)}")
     }
     println("-----------------------------------\n")
     count = 0
