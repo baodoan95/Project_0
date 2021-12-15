@@ -14,13 +14,18 @@ class gameAlgorithm {
     println(s"There are a total of: ${Console.YELLOW}$dbchoiceNum${Console.RESET} word choices.")
     println(s"Please pick from ${Console.YELLOW}1 - $dbchoiceNum${Console.RESET}")
     print("Enter your choice: ")
-    var choice = io.StdIn.readInt()
+    var choice = 0
+    try {
+      choice = io.StdIn.readInt()
+    }catch{
+      case e: NumberFormatException => "Invalid Input. Please try again"
+    }
     var choiceCheck = false
     var ans = new String
     while(choiceCheck == false) choice match{
       case x if 1 to dbchoiceNum contains x => ans = dbList(x-1)
         choiceCheck = true
-      case _ => println("Invalid input.  Re-enter")
+      case _ => print("Invalid input.  Re-enter:")
         choice = io.StdIn.readInt()
     }
     //Update chosen word into database as played once and plus 1 to count
@@ -59,7 +64,8 @@ class gameAlgorithm {
       println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
       indexBuffer.clear()
       if(countAttempt == 0){
-        println(s"\n${Console.BLUE}YOU LOST!   NO POINTS EARNED THIS ROUND\n${Console.RESET}")
+        println(s"\n${Console.BLUE}The Correct Word Is: $ans")
+        println(s"YOU LOST!   NO POINTS EARNED THIS ROUND\n${Console.RESET}")
         isWinner = true
       }
       if(ansDisplay.indexOf('_') == -1){
