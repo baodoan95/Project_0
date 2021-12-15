@@ -2,6 +2,7 @@ package com.hangmanMethods
 class playerHandling {
     val gameAlgorithm = new gameAlgorithm()
     val startOptions = new startOptions()
+    val welcomeLine = new welcomeLine()
     var nickname = new String
     def getInfo():Unit= {
       val dbConnect = new dbConnect()
@@ -32,6 +33,7 @@ class playerHandling {
           printEndChoices()
           endChoiceInput()
         case "3" => println("")
+          welcomeLine.print()
           startOptions.printOptions()
           startOptions.getInput()
         case _ => println("Invalid input.  Try again.")

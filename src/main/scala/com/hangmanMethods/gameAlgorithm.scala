@@ -19,6 +19,7 @@ class gameAlgorithm {
       choice = io.StdIn.readInt()
     }catch{
       case e: NumberFormatException => "Invalid Input. Please try again"
+      case e: StringIndexOutOfBoundsException => "Invalid Input. Please try again"
     }
     var choiceCheck = false
     var ans = new String
