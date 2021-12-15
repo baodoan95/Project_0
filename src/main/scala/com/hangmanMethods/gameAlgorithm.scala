@@ -39,7 +39,7 @@ class gameAlgorithm {
     var incorrectGuesses = new ListBuffer[Char]
     //Main game start
     println("\nGAME START! \n")
-    println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
+    println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Remaining Attempts: $countAttempt${Console.RESET}")
     //Loop logic until player win or lose
     while(isWinner != true) {
       print("Take your guess (1-quit): ")
@@ -61,7 +61,7 @@ class gameAlgorithm {
           ansDisplay = ansDisplay.updated(indexBuffer(i), userAns)
         }
       }
-      println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Attempts Left: $countAttempt${Console.RESET}")
+      println(s"${Console.GREEN}${Console.BOLD}${ansDisplay.mkString("")}${Console.RESET}         ${Console.BOLD}Remaining Attempts: $countAttempt${Console.RESET}")
       indexBuffer.clear()
       if(countAttempt == 0){
         println(s"\n${Console.BLUE}The Correct Word Is: $ans")
