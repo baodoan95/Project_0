@@ -1,6 +1,6 @@
 Hello Guys,
 
-My name is Bao Doan and this is my first project working at Revature on making a hangman game that can perform CRUD operations on database.  Programming language used to build this project is scala and mySQL is used to communicate with database with the help of java connector library dependency. 
+My name is Bao Doan and this is my first project working at Revature on making a hangman game that can perform CRUD operations on database.  Programming language used to build this project is scala and mySQL is used to communicate with database with the implement of java connector library dependency in sbt. 
 
 Structure of database:
 3 TABLES: players, scores, words
